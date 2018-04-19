@@ -173,7 +173,7 @@ comma (`,`), except for type `box` which uses a semicolon (`;`). Each
 An example of an array constant is:
 
 ``` programlisting
-'{{1,2,3},{4,5,6},{7,8,9}}'
+'&#123;{1,2,3},{4,5,6},{7,8,9}&#125;'
 ```
 
 This constant is a two-dimensional, 3-by-3 array consisting of three
@@ -198,12 +198,12 @@ Now we can show some `INSERT` statements:
 INSERT INTO sal_emp
     VALUES ('Bill',
     '{10000, 10000, 10000, 10000}',
-    '{{"meeting", "lunch"}, {"training", "presentation"}}');
+    '&#123;{"meeting", "lunch"}, {"training", "presentation"}&#125;');
 
 INSERT INTO sal_emp
     VALUES ('Carol',
     '{20000, 25000, 25000, 25000}',
-    '{{"breakfast", "consulting"}, {"meeting", "lunch"}}');
+    '&#123;{"breakfast", "consulting"}, {"meeting", "lunch"}&#125;');
 ```
 
 The result of the previous two inserts looks like this:
@@ -212,8 +212,8 @@ The result of the previous two inserts looks like this:
 SELECT * FROM sal_emp;
  name  |      pay_by_quarter       |                 schedule
 -------+---------------------------+-------------------------------------------
- Bill  | {10000,10000,10000,10000} | {{meeting,lunch},{training,presentation}}
- Carol | {20000,25000,25000,25000} | {{breakfast,consulting},{meeting,lunch}}
+ Bill  | {10000,10000,10000,10000} | &#123;{meeting,lunch},{training,presentation}&#125;
+ Carol | {20000,25000,25000,25000} | &#123;{breakfast,consulting},{meeting,lunch}&#125;
 (2 rows)
 ```
 
@@ -224,7 +224,7 @@ mismatch causes an error, for example:
 INSERT INTO sal_emp
     VALUES ('Bill',
     '{10000, 10000, 10000, 10000}',
-    '{{"meeting", "lunch"}, {"meeting"}}');
+    '&#123;{"meeting", "lunch"}, {"meeting"}}');
 ERROR:  multidimensional arrays must have array expressions with matching dimensions
 ```
 
@@ -309,7 +309,7 @@ SELECT schedule[1:2][1:1] FROM sal_emp WHERE name = 'Bill';
 
         schedule
 ------------------------
- {{meeting},{training}}
+ &#123;{meeting},{training}}
 (1 row)
 ```
 
@@ -323,7 +323,7 @@ SELECT schedule[1:2][2] FROM sal_emp WHERE name = 'Bill';
 
                  schedule
 -------------------------------------------
- {{meeting,lunch},{training,presentation}}
+ &#123;{meeting,lunch},{training,presentation}}
 (1 row)
 ```
 
@@ -339,14 +339,14 @@ SELECT schedule[:2][2:] FROM sal_emp WHERE name = 'Bill';
 
         schedule
 ------------------------
- {{lunch},{presentation}}
+ &#123;{lunch},{presentation}}
 (1 row)
 
 SELECT schedule[:][1:1] FROM sal_emp WHERE name = 'Bill';
 
         schedule
 ------------------------
- {{meeting},{training}}
+ &#123;{meeting},{training}}
 (1 row)
 ```
 
@@ -495,7 +495,7 @@ SELECT ARRAY[1,2] || ARRAY[3,4];
 SELECT ARRAY[5,6] || ARRAY[[1,2],[3,4]];
       ?column?
 ---------------------
- {{5,6},{1,2},{3,4}}
+ &#123;{5,6},{1,2},{3,4}}
 (1 row)
 ```
 
@@ -583,13 +583,13 @@ SELECT array_cat(ARRAY[1,2], ARRAY[3,4]);
 SELECT array_cat(ARRAY[[1,2],[3,4]], ARRAY[5,6]);
       array_cat
 ---------------------
- {{1,2},{3,4},{5,6}}
+ &#123;{1,2},{3,4},{5,6}}
 (1 row)
 
 SELECT array_cat(ARRAY[5,6], ARRAY[[1,2],[3,4]]);
       array_cat
 ---------------------
- {{5,6},{1,2},{3,4}}
+ &#123;{5,6},{1,2},{3,4}}
 ```
 
 In simple cases, the concatenation operator discussed above is preferred
@@ -784,7 +784,7 @@ equal sign (`=`). For example:
 
 ``` programlisting
 SELECT f1[1][-2][3] AS e1, f1[1][-1][5] AS e2
- FROM (SELECT '[1:1][-2:-1][3:5]={{{1,2,3},{4,5,6}}}'::int[] AS f1) AS ss;
+ FROM (SELECT '[1:1][-2:-1][3:5]={&#123;{1,2,3},{4,5,6}}}'::int[] AS f1) AS ss;
 
  e1 | e2
 ----+----
