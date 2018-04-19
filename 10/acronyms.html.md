@@ -14,8 +14,6 @@ Part VIII. Appendixes
 
  [Next](biblio.html "Bibliography")
 
------
-
 
 
 ## Appendix K. Acronyms
