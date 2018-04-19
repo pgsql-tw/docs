@@ -1,8 +1,8 @@
-<div class="navheader" data-xmlns="http://www.w3.org/TR/xhtml1/transitional">
+
 
 Appendix K. Acronyms
 
-</div>
+
 
 [Prev](docguide-style.html "J.5. Style Guide") 
 
@@ -16,27 +16,16 @@ Part VIII. Appendixes
 
 -----
 
-<div id="ACRONYMS" class="appendix">
 
-<div class="titlepage">
-
-<div>
-
-<div>
 
 ## Appendix K. Acronyms
 
-</div>
 
-</div>
-
-</div>
 
 This is a list of acronyms commonly used in the
 <span class="productname">PostgreSQL</span> documentation and in
 discussions about <span class="productname">PostgreSQL</span>.
 
-<div class="variablelist">
 
   - <span class="term">ANSI</span>  
     [American National Standards
@@ -327,17 +316,12 @@ discussions about <span class="productname">PostgreSQL</span>.
     [Extensible Markup
 Language](http://en.wikipedia.org/wiki/XML)
 
-</div>
 
-</div>
 
-<div class="navfooter">
-
------
+---
 
 |                             |                       |                     |
 | :-------------------------- | :-------------------: | ------------------: |
 | [Prev](docguide-style.html) | [Up](appendixes.html) | [Next](biblio.html) |
 | J.5. Style Guide            |  [Home](index.html)   |        Bibliography |
 
-</div>
